@@ -1,0 +1,8 @@
+pytube
+scrapetube
+langchain-openai
+tiktoken
+langchain
+python-telegram-bot
+asyncio
+youtube-transcript-api
