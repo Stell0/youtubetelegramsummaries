@@ -1,14 +1,13 @@
 import telegram_alert
 from pytube import YouTube
 import scrapetube
-
-
+import os
 
 def main():
 	# load channels
-	with open('config/channels.txt', 'r') as file:
-		channels = [line.strip() for line in file if line.strip()]
-	
+	channels_list = os.environ.get("CHANNEL_LIST")
+	channels = channels_list.split()
+
 	for channel in channels:
 		try:
 			videos = scrapetube.get_channel(channel_url=channel,limit=1)

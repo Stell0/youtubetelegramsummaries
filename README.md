@@ -1,38 +1,79 @@
 # YouTube to Telegram Summaries
 
-- Check for new videos from a list of YouTube channels
+This program use github actions to check every hour if there are new videos in a list of youtube channels, than if there is a new one, uses LangChain (OpenAI model) to summarize the content of the video and send the summary to a telegram group.
+
+It only works with english at the moment.
+
+
+TL;DR:
+- Check for new videos from a list of YouTube channels 
 
 - When a new video is published, take the transcript and summarize it
 
-- Send the summary to a Telegram channel
+- Send the summary to a Telegram group
 
-Needs an OpenAI api key to make the summary
 
+## Launch using docker
+
+Export variables
 ```
 export OPENAI_API_KEY=xx-xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX
+export TELEGRAM_CHAT_ID=-123456789
+export TELEGRAM_BOT_TOKEN=1234567890:XXX-XxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX
+export CHANNEL_LIST=https://www.youtube.com/@allin https://www.youtube.com/@lexfridman https://www.youtube.com/@hubermanlab"
 ```
 
-If a Telegram TELEGRAM_CHAT_ID and TELEGRAM_BOT_TOKEN environment variables are provided, summaries are also sent to the Telegram chat
-
-## Telegram (optional):
+And launch
 ```
-TELEGRAM_CHAT_ID=-123456789
-TELEGRAM_BOT_TOKEN=1234567890:XXX-XxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX
+docker run -e TELEGRAM_CHAT_ID -e TELEGRAM_BOT_TOKEN -e OPENAI_API_KEY -e CHANNEL_LIST stell0/youtubetelegramsummaries:latest
 ```
 
-## Launch:
 
+## Launch manually
+
+Clone repo
+```
+git clone git@github.com:Stell0/youtubetelegramsummaries.git
+cd youtubetelegramsummaries
+```
+
+Install requirements
+```
+pip install -r requirements.txt
+```
+
+Export variables
+```
+export OPENAI_API_KEY=xx-xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX
+export TELEGRAM_CHAT_ID=-123456789
+export TELEGRAM_BOT_TOKEN=1234567890:XXX-XxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX
+export CHANNEL_LIST=https://www.youtube.com/@allin https://www.youtube.com/@hubermanlab https://www.youtube.com/@JosephCarlsonShow"
+```
+
+And launch
 ```
 python3 src/main.py
 ```
 
-## How to setup your github action bot:
+
+## Launch every hour using github actions:
 
 - fork this repository
-- add into your https://github.com/YOUR_USERNAME/youtubetelegramsummaries/settings/secrets/actions the following variables:
-`DOCKERHUB_USERNAME`: your [dockerhub](https://hub.docker.com/) username
-`DOCKERHUB_TOKEN`: dockerhub read/write access token https://hub.docker.com/settings/security
+
+- add into your [action secrets](https://github.com/YOUR_USERNAME/youtubetelegramsummaries/settings/secrets/actions)
+ the following variables:
+
 `TELEGRAM_CHAT_ID`: the [ID of the telegram chat](https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id) you whant your message to be sent
 `TELEGRAM_BOT_TOKEN`: a telegram bot [token](https://core.telegram.org/bots/features#botfather)
-`OPENAI_API_KEY`: OpenAI API key
-- change all "stell0" occurrence in .github/workflows/*.yml with your username
+`OPENAI_API_KEY`: your OpenAI API key
+
+- Then add in your [action variables](https://github.com/YOUR_USERNAME/youtubetelegramsummaries/settings/variables/actions)the variable with the list of channels
+
+`CHANNEL_LIST`: list of youtube channels, for instance:
+```
+https://www.youtube.com/@allin
+https://www.youtube.com/@lexfridman
+https://www.youtube.com/@hubermanlab
+```
+
+then wait ⏱️ (cron is launched every hour and take videos published during the previous hour)

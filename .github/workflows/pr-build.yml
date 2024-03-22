@@ -24,5 +24,7 @@ jobs:
         push: true
         tags: stell0/youtubetelegramsummaries:S(date +%s)
     - name: Run the Docker container
-      run: docker run stell0/youtubetelegramsummaries:latest
+      env:
+        CHANNEL_LIST: ${{ env.CHANNEL_LIST }}
+      run: docker run -e CHANNEL_LIST stell0/youtubetelegramsummaries:latest
       

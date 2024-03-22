@@ -26,5 +26,6 @@ jobs:
     - name: Run the Docker container
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      run: docker run -e OPENAI_API_KEY stell0/youtubetelegramsummaries:latest
+        CHANNEL_LIST: ${{ env.CHANNEL_LIST }}
+      run: docker run -e OPENAI_API_KEY -e CHANNEL_LIST stell0/youtubetelegramsummaries:latest
       
