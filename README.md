@@ -55,6 +55,12 @@ And launch
 python3 src/main.py
 ```
 
+You can also specify the video url if you want to process only one
+```
+python3 src/main.py https://www.youtube.com/watch?v=3tEcLAud7Nc
+```
+
+
 
 ## Launch every hour using GitHub Actions:
 
