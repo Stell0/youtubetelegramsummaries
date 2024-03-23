@@ -56,7 +56,7 @@ python3 src/main.py
 ```
 
 
-## Launch every hour using github actions:
+## Launch every hour using GitHub Actions:
 
 - fork this repository
 
