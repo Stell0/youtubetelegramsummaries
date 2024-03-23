@@ -64,7 +64,9 @@ python3 src/main.py
  the following variables:
 
 `TELEGRAM_CHAT_ID`: the [ID of the telegram chat](https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id) you whant your message to be sent
+
 `TELEGRAM_BOT_TOKEN`: a telegram bot [token](https://core.telegram.org/bots/features#botfather)
+
 `OPENAI_API_KEY`: your OpenAI API key
 
 - Then add in your [action variables](https://github.com/YOUR_USERNAME/youtubetelegramsummaries/settings/variables/actions)the variable with the list of channels
