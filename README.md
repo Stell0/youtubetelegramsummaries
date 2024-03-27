@@ -66,6 +66,8 @@ python3 src/main.py https://www.youtube.com/watch?v=3tEcLAud7Nc
 
 - fork this repository
 
+> **_NOTE:_**  go to the Actions tab and enable the scheduled workflows because they are disabled for the forked repositories.
+
 - add into your [action secrets](https://github.com/YOUR_USERNAME/youtubetelegramsummaries/settings/secrets/actions)
  the following variables:
 
@@ -85,3 +87,4 @@ https://www.youtube.com/@hubermanlab
 ```
 
 then wait ⏱️ (cron is launched every hour and take videos published during the previous hour)
+
