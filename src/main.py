@@ -2,11 +2,11 @@ import telegram_alert
 from pytube import YouTube
 import scrapetube
 import os, sys
-from ytsummary import get_summary
+from ytsummary import get_summary,get_summary2,get_summary3
 
 def process_video(url):
 	video = YouTube(url)
-	summary = get_summary(video.watch_url)
+	summary = get_summary3(video.watch_url)
 	telegram_alert.send_alert(f'New video: {video.title}\n{video.watch_url}\n{summary}')
 
 def main():
