@@ -3,6 +3,7 @@ scrapetube
 langchain-openai
 tiktoken
 langchain
+langchain-community
 python-telegram-bot
 asyncio
 youtube-transcript-api
