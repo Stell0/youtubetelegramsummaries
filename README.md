@@ -86,5 +86,7 @@ https://www.youtube.com/@lexfridman
 https://www.youtube.com/@hubermanlab
 ```
 
+`LANGUAGE`: transcription language to use. Default "en" 
+
 then wait ⏱️ (cron is launched every hour and take videos published during the previous hour)
 
