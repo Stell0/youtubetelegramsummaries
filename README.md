@@ -12,6 +12,10 @@ TL;DR:
 
 - Send the summary to a Telegram group
 
+## Launch on a single video
+```
+docker run -e OPENAI_API_KEY=xx-xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX -e LANGUAGE=en docker.io/stell0/youtubetelegramsummaries python3 src/main.py https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
 
 ## Launch using docker
 
